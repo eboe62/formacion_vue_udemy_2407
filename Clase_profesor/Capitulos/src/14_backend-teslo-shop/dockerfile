@@ -1,0 +1,14 @@
+# Usa una imagen base de PostgreSQL (ajusta la versión según lo que necesites)
+FROM postgres:14.3
+
+# Actualiza el sistema e instala nano y watch
+RUN apt-get update && apt-get install -y nano watch
+
+# Copia el archivo postgresql.conf desde la carpeta del host (máquina Windows) al contenedor
+COPY ./postgresql.conf /var/lib/postgresql/data/postgresql.conf
+
+# Cambia el dueño del archivo postgresql.conf a postgres
+RUN chown postgres:postgres /var/lib/postgresql/data/postgresql.conf
+
+# Define el comando por defecto (opcional) para ejecutar el contenedor
+CMD ["docker-entrypoint.sh", "postgres"]
