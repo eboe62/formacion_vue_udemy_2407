@@ -7,7 +7,9 @@ export const getProductsAction = async (page: number = 1, limit: number = 10) =>
     const { data } = await tesloApi.get<Product[]>(
       `/products?limit=${limit}&offset=${page * limit}`,
     );
-    console.log(data);
+
+    console.log(data[0].title);
+
     return data.map((product) => ({
       ...product,
       images: product.images.map(getProductImageAction),
