@@ -287,3 +287,12 @@
     </div>
   </section>
 </template>
+
+<script lang="ts" setup>
+import { tesloApi } from '@/api/tesloApi';
+import { getProductsAction } from '@/modules/products/actions';
+
+tesloApi;
+getProductsAction();
+
+</script>
