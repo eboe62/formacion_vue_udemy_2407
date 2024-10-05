@@ -8,7 +8,7 @@ export const getProductsAction = async (page: number = 1, limit: number = 10) =>
       `/products?limit=${limit}&offset=${page * limit}`,
     );
 
-    console.log(data[0].title);
+    console.log(data);
 
     return data.map((product) => ({
       ...product,
